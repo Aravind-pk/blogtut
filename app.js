@@ -13,7 +13,7 @@ const dbURI = "mongodb+srv://aravindpk:aravind1245@webed.lzy6t.mongodb.net/webed
 
 mongoose.connect( dbURI,  { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
-        app.listen(3000)
+        app.listen(process.env.PORT || 3000)
         console.log("database connected , server running")
     })
     .catch(err => console.log(err));
