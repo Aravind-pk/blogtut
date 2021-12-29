@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs')  %> 
+
+
+<body>
+  <%- include('./partials/nav.ejs')  %> 
+
+
+
+  <div class="container-fluid pt-5">
+
+    <div class="row row-cols-1 row-cols-md-2">
+
+
+      <% if(blogs.length===0){ %>
+
+        <p>No blogs yet....</p>
+
+        <% }else{ blogs.forEach(blog=> { %>
+
+
+          <div class="col mb-4" onclick="window.location.href='/blog'">
+            <div class="card">
+              <!-- <img src="..." class="card-img-top" alt="..."> -->
+              <div class="card-body">
+                <h5 class="card-title">
+                  <%= blog.heading%>
+                </h5>
+                <p class="card-text text-truncate">
+                  <%= blog.body%>
+                </p>
+                <a href="/blog">Read more</a>
+              </div>
+            </div>
+          </div>
+
+          <% }); } %>
+
+
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

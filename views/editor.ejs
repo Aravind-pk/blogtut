@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+  <%- include('./partials/head.ejs')  %> 
+
+
+<body>
+  <%- include('./partials/nav.ejs')  %> 
+
+  
+  <div class="container-fluid pt-5">
+
+
+      <button   onclick="window.location.href = '/create'" class="btn btn-primary text-capitalize font-weight-bolder mx-auto d-block mb-5">create new post</button>
+ 
+
+    <div class="row row-cols-1 row-cols-md-2">
+
+
+
+      <% if(blogs.length===0){ %>
+
+        <p>No blogs yet....</p>
+
+      <% }else{ blogs.forEach(blog=> { %>
+
+
+
+
+        <div class="col mb-4">
+          <div class="card">
+            <div class="card-header">
+
+              <h5 class="card-title my-auto"><%= blog.heading %> </h5>
+
+            </div>
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-body">
+              <p class="card-text"> Writer: <%= blog.author %> </p>
+            </div>
+            <div  class="card-footer text-right">
+              <a id=`${blog._id}`  class="mr-4 text-danger delete"><i  class="far fa-trash-alt"></i></a>
+              <a  class="mr-4 text-warning edit "><i class="far fa-edit"></i></a>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+      <% })}; %>
+
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+
+  <script>
+
+
+    const deleteBtns = document.querySelector('a.delete');
+
+    deleteBtns.addEventListener('click',(e) =>{
+      const url = `/blogs/${e}`;
+      console.log(e.target);
+
+    })
+    
+    
+
+    
+
+  </script>
+</body>
+
+</html>
