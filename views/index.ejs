@@ -31,7 +31,7 @@
                   <%= blog.heading%>
                 </h5>
                 <p class="card-text text-truncate">
-                  <%= blog.body%>
+                  <%= blog.body.toString().split(' ').slice(0, 3).join(' ');%> ......
                 </p>
                 <a href="/blog/<%= blog._id %>">Read more</a>
               </div>
