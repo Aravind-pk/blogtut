@@ -13,7 +13,7 @@ const dbURI = "mongodb+srv://aravindpk:aravind1245@webed.lzy6t.mongodb.net/webed
 
 mongoose.connect( dbURI,  { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
-        app.listen(process.env.PORT || 3000)
+        app.listen(process.env.PORT || 5000)
         console.log("database connected , server running")
     })
     .catch(err => console.log(err));
@@ -84,7 +84,9 @@ app.get('/blog/:id',(req,res) =>{
 })
 
 
-//new blog
+//new blog.................................................................
+
+
 app.get('/create', (req, res) => {
     res.render('create',{title:"blogtitle"});
 });
@@ -96,14 +98,77 @@ app.post('/create',(req,res) =>{
 
     blog.save()
         .then(result =>{
-            res.redirect('/editor');
+            res.redirect(`/blog/${result._id}`);
         })
         .catch(err => console.log(err));
 
 })
 
+//delete blog .................................................................
 
-//404 page
+
+app.delete('/blog/:id' , (req,res)=>{
+
+    const response = {
+        status:'success',
+        redirect:'/editor'
+    }
+
+    Blog.findByIdAndDelete(req.params.id)
+        .then(result =>  res.json(response))
+        .catch(err => console.log(err));
+})
+
+//edit blog.....................................................................
+
+
+//edit get
+
+
+app.get('/blog/edit/:id' , (req,res)=>{
+
+    const id = req.params.id;
+    Blog.findById(id)
+        .then(result =>{
+            res.render('edit', {title:'blog',blog: result});
+        })
+
+})
+
+//edit put
+
+app.put('/blog/edit/:id',(req,res)=>{
+
+
+    const response = {
+        status:'success',
+        redirect:'/editor'
+    }
+
+    console.log(req.body);
+
+
+    Blog.findByIdAndUpdate(req.params.id , req.body)
+
+        .then( result => res.json(response) )
+        .catch(err => console.log(err));
+
+    
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+//404 page ................................................................
 app.use((req,res) =>{
     res.status(404).send("Oops page not found :)");
 })
