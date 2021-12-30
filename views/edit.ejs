@@ -18,7 +18,7 @@
 
 
 
-                <form action = "blog/edit<%= blog._id%>" method="put">
+                <form action = "/blog/edit/<%= blog._id%>" method="POST">
 
                   <div class="form-group form-floating">
                     <label for="">Blog headline</label>
@@ -63,30 +63,6 @@
         document.getElementById('body').value = '<%= blog.body%>';
         document.getElementById('author').value = '<%= blog.author%>';
 
-
-        const save =(e)=>{
-
-          // e.preventDefault();
-
-          const endpoint = `/blog/edit/<%= blog._id%>`;
-
-          fetch( endpoint, {
-            method:'PUT',
-            body: JSON.stringify({
-              heading:document.getElementById('heading').value,
-              body: document.getElementById('body').value,
-              author:document.getElementById('author').value
-            })
-          })
-          .then(response => response.json())
-          .then(data => console.log(data))
-          
-
-
-
-
-
-        }
 
       </script>
   </body>

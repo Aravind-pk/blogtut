@@ -137,8 +137,7 @@ app.get('/blog/edit/:id' , (req,res)=>{
 
 //edit put
 
-app.put('/blog/edit/:id',(req,res)=>{
-
+app.post('/blog/edit/:id',(req,res)=>{
 
     const response = {
         status:'success',
@@ -147,13 +146,11 @@ app.put('/blog/edit/:id',(req,res)=>{
 
     console.log(req.body);
 
-
     Blog.findByIdAndUpdate(req.params.id , req.body)
 
-        .then( result => res.json(response) )
+        .then( result => res.redirect(`/`))
         .catch(err => console.log(err));
 
-    
 })
 
 
