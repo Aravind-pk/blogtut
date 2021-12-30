@@ -35,22 +35,13 @@ app.use(morgan('dev'))
 app.get('/', (req, res) => {
 
 
-    Blog.find()
+    Blog.find().sort({ createdAt: -1 })
         .then(result => {
             res.render('index', {title:'Home',blogs:result});
         })
         .catch(err => console.log(err));
 
 
-
-
-    // const blogs = [
-    //     {heading:"hello", body:"this is the body", author: "myname"},
-    //     {heading:"hello2", body:"this is the body", author: "myname"},
-    //     {heading:"hello3", body:"this is the body", author: "myname"},
-    // ]
-
-    // res.render('index',{ title:"Home" ,blogs });
 });
 
 
