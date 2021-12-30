@@ -7,8 +7,8 @@
 
       <div class="container-fluid pt-5 pb-5">
 
-        <h1 class = 'text-center mb-4'>Blog title</h1>
-        <h4 class = "text-center"><span>25 December 2020</span>  | <span class = "text-capitalize"> post by <span>Author name</span></span> </h4>
+        <h1 class = 'text-center mb-4'><%= blog.heading  %> </h1>
+        <h4 class = "text-center"><span> <%= blog.updatedAt %> </span>  | <span class = "text-capitalize"> post by <span> <%= blog.author  %> </span></span> </h4>
     <hr>  
 
     <div class="row">
@@ -18,12 +18,7 @@
                     <div class="card-body">
                         <p class="card-text">
 
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid maxime inventore eveniet repudiandae nostrum recusandae vero esse aperiam sunt, nihil officiis, quam repellendus iure animi suscipit? Eveniet voluptatibus reprehenderit natus?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid maxime inventore eveniet repudiandae nostrum recusandae vero esse aperiam sunt, nihil officiis, quam repellendus iure animi suscipit? Eveniet voluptatibus reprehenderit natus?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid maxime inventore eveniet repudiandae nostrum recusandae vero esse aperiam sunt, nihil officiis, quam repellendus iure animi suscipit? Eveniet voluptatibus reprehenderit natus?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid maxime inventore eveniet repudiandae nostrum recusandae vero esse aperiam sunt, nihil officiis, quam repellendus iure animi suscipit? Eveniet voluptatibus reprehenderit natus?
-
+                            <%= blog.body %> 
                         </p>
                     </div>
                 </div>

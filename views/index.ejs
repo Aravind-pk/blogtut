@@ -20,8 +20,10 @@
 
         <% }else{ blogs.forEach(blog=> { %>
 
+          <% let url = `/blog/${blog}` %> 
 
-          <div class="col mb-4" onclick="window.location.href='/blog'">
+
+          <div class="col mb-4" onclick="window.location.href='/blog/<%= blog._id %>'">
             <div class="card">
               <!-- <img src="..." class="card-img-top" alt="..."> -->
               <div class="card-body">
@@ -31,7 +33,7 @@
                 <p class="card-text text-truncate">
                   <%= blog.body%>
                 </p>
-                <a href="/blog">Read more</a>
+                <a href="/blog/<%= blog._id %>">Read more</a>
               </div>
             </div>
           </div>

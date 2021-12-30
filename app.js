@@ -74,6 +74,16 @@ app.get('/blog', (req, res) => {
 });
 
 
+app.get('/blog/:id',(req,res) =>{
+    const id = req.params.id;
+    Blog.findById(id)
+        .then(result =>{
+            console.log(result);
+            res.render('blog', {title:'blog',blog: result});
+        })
+})
+
+
 //new blog
 app.get('/create', (req, res) => {
     res.render('create',{title:"blogtitle"});
