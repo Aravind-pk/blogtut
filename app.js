@@ -139,7 +139,7 @@ app.post('/blog/edit/:id',(req,res)=>{
 
     Blog.findByIdAndUpdate(req.params.id , req.body)
 
-        .then( result => res.redirect(`/`))
+        .then( result => res.redirect(`/blog/${result._id}`))
         .catch(err => console.log(err));
 
 })
