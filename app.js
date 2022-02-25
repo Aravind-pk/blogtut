@@ -29,6 +29,8 @@ app.use(express.urlencoded({ extended: true }));
 //morgan logger
 app.use(morgan('dev'))
 
+app.use(express.json());
+
 
 
 //all blogs page
@@ -144,6 +146,13 @@ app.post('/blog/edit/:id',(req,res)=>{
 
 })
 
+
+app.post('/node',(req,res)=>{
+
+    console.log(req.body);
+    res.send("Yeea i got you");
+
+})
 
 
 
